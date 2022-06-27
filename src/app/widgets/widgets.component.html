@@ -1,0 +1,43 @@
+
+
+<section class="widget-form">
+
+    <form [formGroup]="widgetForm">
+
+        <div class="form-field">
+
+            <div class="form-field">
+                <label for="name">Name</label>
+                <input type="text" id="name" formControlName="name">
+                <div class="form-error" *ngIf="widgetForm.get('name')?.errors as errors">
+                    <div *ngIf="errors['required']">Requied</div>
+                    <div *ngIf="errors['maxlength']">
+                        Too long. Required: {{errors['maxlength'].requiredLength}} actual: {{errors['maxlength'].actualLength}}
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-field">
+                <div>
+                    <label for="description">Description</label>
+                </div> 
+                <textarea id="description" formControlName="description" cols="30" rows="10"></textarea>
+            </div>
+
+        </div>
+
+
+    </form>
+
+</section>
+
+
+<section>
+
+    <div>Name errors: {{widgetForm.get('name')?.errors | json}}</div>
+
+    <div>widgetForm.value: {{widgetForm.value | json}}</div>
+
+
+</section>

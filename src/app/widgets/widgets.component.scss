@@ -1,0 +1,19 @@
+
+
+form {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 40px;
+  }
+  
+  .form-field {
+    padding-top: 20px;
+
+    label {
+        padding-right: 20px;
+    }
+  }
+
+  .form-error {
+    color: red;
+  }
