@@ -5,23 +5,34 @@
 
   <span class="spacer"></span>
 
-  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-    <mat-icon>more_vert</mat-icon>
-  </button>
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item routerLink="/first-component" [queryParams]="{ctr: 3}">
-      <mat-icon>pin</mat-icon>
-      <span>First Component</span>
+  <div class="toolbar-menu">
+    <button mat-button routerLink="/first-component" [queryParams]="{ctr: 3}">First Component</button>
+    <button mat-button routerLink="/second-component">Second Component</button>
+    <button mat-button routerLink="/widgets">Widgets</button>
+  </div>
+
+  <div class="dropdown-menu">
+
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+      <mat-icon>more_vert</mat-icon>
     </button>
-    <button mat-menu-item routerLink="/second-component">
-      <mat-icon>crop_16_9</mat-icon>
-      <span>Second Component</span>
-    </button>
-    <button mat-menu-item routerLink="/widgets">
-      <!-- <mat-icon>notifications_off</mat-icon> -->
-      <span>Widgets</span>
-    </button>
-  </mat-menu>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item routerLink="/first-component" [queryParams]="{ctr: 3}">
+        <mat-icon>pin</mat-icon>
+        <span>First Component</span>
+      </button>
+      <button mat-menu-item routerLink="/second-component">
+        <mat-icon>crop_16_9</mat-icon>
+        <span>Second Component</span>
+      </button>
+      <button mat-menu-item routerLink="/widgets">
+        <!-- <mat-icon>notifications_off</mat-icon> -->
+        <span>Widgets</span>
+      </button>
+    </mat-menu>
+
+  </div>
+
 
 </mat-toolbar>
 
