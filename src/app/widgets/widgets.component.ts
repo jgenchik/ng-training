@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { NewWidget } from '../shared/types/widget.type';
+import { Observable, of, tap } from 'rxjs';
+import { NewWidget, Widget } from '../shared/types/widget.type';
+import { WidgetsService } from '../shared/widgets.service';
 
 @Component({
   selector: 'app-widgets',
@@ -11,11 +13,20 @@ export class WidgetsComponent implements OnInit {
 
   widgetForm = this.makeForm();
 
+  widgets$: Observable<Widget[]> = of([]);
+
   newWidget: NewWidget | undefined;
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private widgetsService: WidgetsService) { }
 
   ngOnInit(): void {
+
+    this.widgets$ = this.widgetsService.widgets$;
+
+    // this.widgets$.pipe(
+    //   tap(widgets => console.log('widgets changed ', widgets))
+    // ).subscribe();
+
   }
 
   addWidget() {
@@ -23,6 +34,8 @@ export class WidgetsComponent implements OnInit {
     const newWidget: NewWidget = this.widgetForm.value as NewWidget;
 
     console.log('New widget', newWidget);
+
+    this.widgetsService.addOne(newWidget);
 
     this.widgetForm.reset();
 
