@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Observable, of, tap } from 'rxjs';
 import { NewWidget, Widget } from '../shared/types/widget.type';
 import { WidgetsService } from '../shared/widgets.service';
@@ -16,6 +16,8 @@ export class WidgetsComponent implements OnInit {
   widgets$: Observable<Widget[]> = of([]);
 
   newWidget: NewWidget | undefined;
+
+  showForm = true;
 
   constructor(private fb: FormBuilder, private widgetsService: WidgetsService) { }
 
@@ -37,8 +39,16 @@ export class WidgetsComponent implements OnInit {
 
     this.widgetsService.addOne(newWidget);
 
+    // this.widgetForm.reset();
+    this.resetForm();
+
+  }
+
+  resetForm() {
     this.widgetForm.reset();
 
+    this.showForm = false;
+    setTimeout(() => this.showForm = true);
   }
 
   private makeForm() {
@@ -48,6 +58,19 @@ export class WidgetsComponent implements OnInit {
       price: [0, [Validators.required, Validators.min(0)]],
       color: ['', Validators.required]
     });
+  }
+
+  get nameFc(): FormControl {
+    return this.widgetForm.get('name') as FormControl;
+  }
+  get descriptionFc(): FormControl {
+    return this.widgetForm.get('description') as FormControl;
+  }
+  get priceFc(): FormControl {
+    return this.widgetForm.get('price') as FormControl;
+  }
+  get colorFc(): FormControl {
+    return this.widgetForm.get('color') as FormControl;
   }
 
 }

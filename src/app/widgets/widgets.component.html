@@ -2,6 +2,69 @@
 
 <section class="widget-form">
 
+    <mat-card>
+
+        <mat-card-title>New Widget</mat-card-title>
+
+        <form [formGroup]="widgetForm" novalidate *ngIf="showForm">
+
+            <mat-card-content>
+
+                <mat-form-field>
+                    <input matInput placeholder="Name" formControlName="name">
+                    <mat-error *ngIf="nameFc.touched && nameFc.hasError('required')">Required</mat-error>
+                    <mat-error *ngIf="nameFc.touched && nameFc.hasError('maxlength')">
+                        Too long. Required: {{nameFc.getError('maxlength').requiredLength}} actual: {{nameFc.getError('maxlength').actualLength}} 
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <input matInput type="number" placeholder="Price" formControlName="price">
+                    <mat-error *ngIf="priceFc.touched && priceFc.hasError('required')">Required</mat-error>
+                    <mat-error *ngIf="priceFc.touched && priceFc.hasError('min')">
+                        Too small. Must not be less than: {{priceFc.getError('min').min}}
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field>
+                    <mat-label>Color</mat-label>
+                    <mat-select formControlName="color">
+                        <mat-option value="BLUE">Blue</mat-option>
+                        <mat-option value="RED">Red</mat-option>
+                        <mat-option value="GREEN">Green</mat-option>
+                    </mat-select>
+                    <mat-error *ngIf="colorFc.touched && colorFc.hasError('required')">Required</mat-error>
+                </mat-form-field>
+
+
+                <div>
+                    <mat-form-field style="width: 100%">
+                        <textarea matInput placeholder="Description" formControlName="description"></textarea>
+                    </mat-form-field>
+                </div>
+                
+
+            </mat-card-content>
+
+
+            <mat-card-actions>
+                <button mat-raised-button color="primary" (click)="addWidget()" [disabled]="!widgetForm.valid">ADD</button>
+                <button mat-raised-button (click)="resetForm()">RESET</button>
+            </mat-card-actions>
+
+        </form>
+
+
+    </mat-card>
+
+
+
+
+</section>
+
+
+<!-- <section class="widget-form">
+
     <form [formGroup]="widgetForm" novalidate>
 
         <div class="form-fields">
@@ -60,7 +123,7 @@
         <button (click)="widgetForm.reset()">RESET</button>
     </div>
 
-</section>
+</section> -->
 
 
 <section>

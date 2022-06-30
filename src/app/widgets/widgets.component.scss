@@ -1,24 +1,43 @@
 
 
-form {
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 40px;
-  }
+
+.widget-form {
+  width: 100%;
   
-  .form-field {
-    padding-top: 20px;
+}
 
-    label {
-        padding-right: 10px;
-        font-weight: bold;
-    }
-  }
+.mat-card {
+  max-width: 500px;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
-  .form-error {
-    color: red;
-  }
+.mat-form-field {
+  margin-left: 2px;
+  margin-right: 10px;
+}
 
-  .actions > button {
-    padding-right: 10px;
-  }
+
+// form {
+//     display: flex;
+//     flex-direction: column;
+//     padding-bottom: 40px;
+//   }
+  
+//   .form-field {
+//     padding-top: 20px;
+
+//     label {
+//         padding-right: 10px;
+//         font-weight: bold;
+//     }
+//   }
+
+//   .form-error {
+//     color: red;
+//   }
+
+//   .actions > button {
+//     padding-right: 10px;
+//   }
