@@ -33,5 +33,9 @@ export class WidgetsService {
     return this.widgets;
   }
 
+  async getAllAsPromise() {
+    return this.widgets;
+  }
+
 
 }

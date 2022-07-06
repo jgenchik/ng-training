@@ -15,6 +15,8 @@ export class WidgetsComponent implements OnInit {
 
   widgets$: Observable<Widget[]> = of([]);
 
+  widgetsAsPromise: Promise<Widget[]> | undefined;
+
   newWidget: NewWidget | undefined;
 
   constructor(private fb: FormBuilder, private widgetsService: WidgetsService) { }
@@ -22,6 +24,8 @@ export class WidgetsComponent implements OnInit {
   ngOnInit(): void {
 
     this.widgets$ = this.widgetsService.widgets$;
+
+    this.widgetsAsPromise = this.widgetsService.getAllAsPromise();
 
     // this.widgets$.pipe(
     //   tap(widgets => console.log('widgets changed ', widgets))
@@ -38,6 +42,9 @@ export class WidgetsComponent implements OnInit {
     this.widgetsService.addOne(newWidget);
 
     this.widgetForm.reset();
+
+
+    this.widgetsAsPromise = this.widgetsService.getAllAsPromise();
 
   }
 
