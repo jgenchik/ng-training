@@ -24,8 +24,6 @@
 
                     <mat-form-field>
                         <input matInput placeholder="Verify Password" formControlName="verifyPassword" type="text">
-                        <!-- <mat-error *ngIf="passwordFc.touched && passwordFc.hasError('required')">Required</mat-error>
-                        <mat-error *ngIf="passwordFc.touched && passwordFc.hasError('passwordStrength')">Must contain Upper, lower and number</mat-error> -->
                     </mat-form-field>
                 </div>
                 <mat-error *ngIf="passwordsFc.touched && passwordsFc.hasError('passwordsNotMatch')" >Passwords not match</mat-error>
@@ -34,19 +32,23 @@
 
 
             <mat-card-actions>
-
+                <button mat-raised-button color="primary" (click)="registerUser()" [disabled]="!userForm.valid">REGISTER</button>
             </mat-card-actions>
+
+
+            <mat-card-footer>
+                {{userForm.value | json}}
+            </mat-card-footer>
 
         </form>
 
     </mat-card>
 
 
-    <div class="debug">
+    <!-- <div class="debug">
         email errors: {{emailFc.errors | json}}  <br>
         password errors: {{passwordFc.errors | json}}  <br>
-        passwordsFc value: {{passwordsFc.value | json}}  <br>
         passwordsFc errors: {{passwordsFc.errors | json}}  <br>
-    </div>
+    </div> -->
 
 </div>
