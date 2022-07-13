@@ -1,0 +1,52 @@
+
+
+<div class="content">
+
+    <mat-card>
+        <mat-card-title>Register User</mat-card-title>
+
+        <form [formGroup]="userForm" novalidate *ngIf="showForm">
+
+            <mat-card-content>
+
+                <mat-form-field>
+                    <input matInput placeholder="Email" formControlName="email" type="text">
+                    <mat-error *ngIf="emailFc.touched && emailFc.hasError('required')">Required</mat-error>
+                    <mat-error *ngIf="emailFc.touched && emailFc.hasError('email')">Must be an email</mat-error>
+                </mat-form-field>
+
+                <div class="passwords" formGroupName="passwords">
+                    <mat-form-field>
+                        <input matInput placeholder="Password" formControlName="password" type="text">
+                        <mat-error *ngIf="passwordFc.touched && passwordFc.hasError('required')">Required</mat-error>
+                        <mat-error *ngIf="passwordFc.touched && passwordFc.hasError('passwordStrength')">Must contain Upper, lower and number</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field>
+                        <input matInput placeholder="Verify Password" formControlName="verifyPassword" type="text">
+                        <!-- <mat-error *ngIf="passwordFc.touched && passwordFc.hasError('required')">Required</mat-error>
+                        <mat-error *ngIf="passwordFc.touched && passwordFc.hasError('passwordStrength')">Must contain Upper, lower and number</mat-error> -->
+                    </mat-form-field>
+                </div>
+                <mat-error *ngIf="passwordsFc.touched && passwordsFc.hasError('passwordsNotMatch')" >Passwords not match</mat-error>
+
+            </mat-card-content>
+
+
+            <mat-card-actions>
+
+            </mat-card-actions>
+
+        </form>
+
+    </mat-card>
+
+
+    <div class="debug">
+        email errors: {{emailFc.errors | json}}  <br>
+        password errors: {{passwordFc.errors | json}}  <br>
+        passwordsFc value: {{passwordsFc.value | json}}  <br>
+        passwordsFc errors: {{passwordsFc.errors | json}}  <br>
+    </div>
+
+</div>
