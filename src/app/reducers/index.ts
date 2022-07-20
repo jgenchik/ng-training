@@ -21,3 +21,15 @@ export const reducers: ActionReducerMap<State> = {
 
 
 export const metaReducers: MetaReducer<State>[] = !environment.production ? [] : [];
+
+export const selectWidgetsState = createFeatureSelector<fromWidget.State>(fromWidget.widgetsFeatureKey);
+
+export const selectWidgetEntities = createSelector(
+  selectWidgetsState,
+  fromWidget.selectEntities
+);
+
+export const selectWidgetsAll = createSelector(
+  selectWidgetsState,
+  fromWidget.selectAll
+);
