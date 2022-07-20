@@ -14,7 +14,7 @@ export class WidgetsService {
 
   constructor() { }
 
-  addOne(widget: NewWidget) {
+  addOne(widget: NewWidget): Widget {
 
     if(! widget.id) {
       widget.id = (new Date()).getTime();
@@ -25,6 +25,8 @@ export class WidgetsService {
     this.widgets.push(widget as Widget);
 
     this.widgetsSubject.next(this.widgets);
+
+    return widget as Widget;
 
   }
 

@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
 import { Observable, of, tap } from 'rxjs';
+import { State } from '../reducers';
 import { NewWidget, Widget } from '../shared/types/widget.type';
 import { WidgetsService } from '../shared/widgets.service';
+import { addWidget } from './widget.actions';
 
 @Component({
   selector: 'app-widgets',
@@ -19,7 +22,7 @@ export class WidgetsComponent implements OnInit {
 
   showForm = true;
 
-  constructor(private fb: FormBuilder, private widgetsService: WidgetsService) { }
+  constructor(private fb: FormBuilder, private widgetsService: WidgetsService, private store: Store<State>) { }
 
   ngOnInit(): void {
 
@@ -37,7 +40,9 @@ export class WidgetsComponent implements OnInit {
 
     console.log('New widget', newWidget);
 
-    this.widgetsService.addOne(newWidget);
+    const widget = this.widgetsService.addOne(newWidget);
+
+    this.store.dispatch(addWidget({widget}));
 
     // this.widgetForm.reset();
     this.resetForm();
