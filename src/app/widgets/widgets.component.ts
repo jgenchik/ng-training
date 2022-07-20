@@ -7,7 +7,7 @@ import { NewWidget, Widget } from '../shared/types/widget.type';
 import { WidgetsService } from '../shared/widgets.service';
 import { addWidget } from './widget.actions';
 
-import { selectWidgetEntities, selectWidgetsAll } from '../reducers';
+import { selectWidgetEntities, selectWidgetsAll, selectWidgetsByColor } from '../reducers';
 
 @Component({
   selector: 'app-widgets',
@@ -26,6 +26,7 @@ export class WidgetsComponent implements OnInit {
 
   selectWidgetEntities$: Observable<any> | undefined;
   selectWidgetsAll$: Observable<any> | undefined;
+  selectBlueWidgets$: Observable<any> | undefined;
 
   constructor(private fb: FormBuilder, private widgetsService: WidgetsService, private store: Store<State>) { }
 
@@ -35,6 +36,9 @@ export class WidgetsComponent implements OnInit {
 
     this.selectWidgetEntities$ = this.store.pipe(select(selectWidgetEntities));
     this.selectWidgetsAll$ = this.store.pipe(select(selectWidgetsAll));
+    this.selectBlueWidgets$ = this.store.pipe(select(selectWidgetsByColor('BLUE')));
+
+
 
     // this.widgets$.pipe(
     //   tap(widgets => console.log('widgets changed ', widgets))

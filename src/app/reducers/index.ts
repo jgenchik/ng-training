@@ -6,6 +6,7 @@ import {
   MetaReducer
 } from '@ngrx/store';
 import { environment } from '../../environments/environment';
+import { Widget } from '../shared/types/widget.type';
 import * as fromWidget from '../widgets/widget.reducer';
 
 
@@ -32,4 +33,11 @@ export const selectWidgetEntities = createSelector(
 export const selectWidgetsAll = createSelector(
   selectWidgetsState,
   fromWidget.selectAll
+);
+
+export const selectWidgetsByColor = (color: string) => createSelector(
+  selectWidgetsAll,
+  (widgets: Widget[]) => {
+    return widgets.filter(widget => widget.color == color);
+  }
 );
