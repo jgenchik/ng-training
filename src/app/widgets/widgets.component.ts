@@ -48,7 +48,9 @@ export class WidgetsComponent implements OnInit {
 
     console.log('New widget', newWidget);
 
-    const widget = this.widgetsService.addOne(newWidget);
+    // const widget = this.widgetsService.addOne(newWidget);
+    const id = (new Date()).getTime();
+    const widget: Widget = {...newWidget, id}
 
     this.store.dispatch(addWidget({widget}));
 

@@ -58,88 +58,22 @@
     </mat-card>
 
 
-
-
 </section>
 
 
-<!-- <section class="widget-form">
+<section class="debug">
 
-    <form [formGroup]="widgetForm" novalidate>
-
-        <div class="form-fields">
-
-            <div class="form-field">
-                <label for="name">Name</label>
-                <input type="text" id="name" formControlName="name">
-                <div class="form-error" *ngIf="widgetForm.get('name')?.touched && widgetForm.get('name')?.errors as errors">
-                    <div *ngIf="errors['required']">Requied</div>
-                    <div *ngIf="errors['maxlength']">
-                        Too long. Required: {{errors['maxlength'].requiredLength}} actual: {{errors['maxlength'].actualLength}}
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="form-field">
-                <div>
-                    <label for="description">Description</label>
-                </div> 
-                <textarea id="description" formControlName="description" cols="30" rows="10"></textarea>
-            </div>
-
-
-            <div class="form-field">
-                <label for="price">Price</label>
-                <input type="number" id="price" formControlName="price">
-                <div class="form-error" *ngIf="widgetForm.get('price')?.touched && widgetForm.get('price')?.errors as errors">
-                    <div *ngIf="errors['required']">Requied</div>
-                    <div *ngIf="errors['min']">
-                        Too small. Must not be less than: {{errors['min'].min}}
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="form-field">
-                <label for="color">Color</label>
-                <select id="color" formControlName="color">
-                    <option value="">Select color</option>
-                    <option value="BLUE">Blue</option>
-                    <option value="RED">Red</option>
-                    <option value="GREEN">Green</option>
-                </select>
-                <div class="form-error" *ngIf="widgetForm.get('color')?.touched && widgetForm.get('color')?.errors as errors">
-                    <div *ngIf="errors['required']">Requied</div>
-                </div>
-            </div>
-
-        </div>
-
-    </form>
-
-    <div class="actions">
-        <button (click)="addWidget()" [disabled]="!widgetForm.valid">ADD</button>
-        <button (click)="widgetForm.reset()">RESET</button>
-    </div>
-
-</section> -->
-
-
-<section>
-
-    <div>Name errors: {{widgetForm.get('name')?.errors | json}}</div>
+    <!-- <div>Name errors: {{widgetForm.get('name')?.errors | json}}</div>
 
     <div>Name FormControl dirty: {{widgetForm.get('name')?.dirty}}</div>
 
     <div>Price errors: {{widgetForm.get('price')?.errors | json}}</div>
 
-    <div>widgetForm.value: {{widgetForm.value | json}}</div>
+    <div>widgetForm.value: {{widgetForm.value | json}}</div> -->
 
     <div>All Widgets: {{widgets$ | async | json}}</div>
 
     <div>selectWidgetEntities$: {{selectWidgetEntities$ | async | json}}</div>
     <div>selectWidgetsAll$: {{selectWidgetsAll$ | async | json}}</div>
-
 
 </section>

@@ -6,6 +6,14 @@
   
 }
 
+section.debug {
+  margin: 50px 10px 0 10px;
+  padding: 20px;
+  background-color: lightgrey;
+  font-size: 1.5rem;
+
+}
+
 .mat-card {
   max-width: 500px;
   margin-top: 20px;
@@ -19,25 +27,3 @@
 }
 
 
-// form {
-//     display: flex;
-//     flex-direction: column;
-//     padding-bottom: 40px;
-//   }
-  
-//   .form-field {
-//     padding-top: 20px;
-
-//     label {
-//         padding-right: 10px;
-//         font-weight: bold;
-//     }
-//   }
-
-//   .form-error {
-//     color: red;
-//   }
-
-//   .actions > button {
-//     padding-right: 10px;
-//   }
