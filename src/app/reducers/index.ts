@@ -41,3 +41,9 @@ export const selectWidgetsByColor = (color: string) => createSelector(
     return widgets.filter(widget => widget.color == color);
   }
 );
+
+export const selectWidgetsLoaded = createSelector(
+  selectWidgetsState,
+  widgetsState => widgetsState.loaded
+);
+

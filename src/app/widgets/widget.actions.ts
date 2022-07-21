@@ -5,6 +5,13 @@ import { NewWidget, Widget } from '../shared/types/widget.type';
 
 export const loadWidgets = createAction(
   '[Widget/API] Load Widgets', 
+  // props<{ widgets: Widget[] }>()
+);
+export const loadWidgetsLazy = createAction(
+  '[Widget/API] Load Widgets Lazy'
+);
+export const loadWidgetsSuccess = createAction(
+  '[Widget/API] Load Widgets Success', 
   props<{ widgets: Widget[] }>()
 );
 

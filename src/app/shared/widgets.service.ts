@@ -7,12 +7,24 @@ import { NewWidget, Widget } from './types/widget.type';
 })
 export class WidgetsService {
 
-  private widgets: Widget[] = [];
+  private initialState: Widget =  {
+      id: 123,
+      color: 'BLUE',
+      name: 'Test',
+      price: 10
+    };
 
-  private widgetsSubject = new BehaviorSubject<Widget[]>(this.widgets);
-  widgets$ = this.widgetsSubject.asObservable();
+  // widgets: Widget[] = [];
+  widgets= [] = new Set<Widget>();
 
-  constructor() { }
+  // private widgetsSubject = new BehaviorSubject<Widget[]>(this.widgets);
+  // widgets$ = this.widgetsSubject.asObservable();
+
+  constructor() {
+    console.log(' *** WidgetsService created');
+    // this.widgets.push(this.initialState);
+    this.widgets.add(this.initialState);
+  }
 
   // addOne(widget: NewWidget): Widget {
 
@@ -36,9 +48,15 @@ export class WidgetsService {
       widget.id = (new Date()).getTime();
     }
 
-    this.widgets.push(widget as Widget);
+    const widgetWithId: Widget = widget as Widget;
 
-    return of(widget) as Observable<Widget>;
+    // this.widgets.push(widgetWithId);
+    console.log('this.widgets', this.widgets);
+    console.log('widgetWithId', widgetWithId);
+    // this.widgets.push(widgetWithId);
+    this.widgets.add(widgetWithId);
+
+    return of(widgetWithId);
 
   }
 
@@ -47,7 +65,8 @@ export class WidgetsService {
   //   return this.widgets;
   // }
   getAll(): Observable<Widget[]> {
-    return of(this.widgets);
+    // return of(this.widgets);
+    return of([...this.widgets]);
   }
 
 

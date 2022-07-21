@@ -7,12 +7,14 @@ export const widgetsFeatureKey = 'widgets';
 
 export interface State extends EntityState<Widget> {
   // additional entities state properties
+  loaded: boolean;
 }
 
 export const adapter: EntityAdapter<Widget> = createEntityAdapter<Widget>();
 
 export const initialState: State = adapter.getInitialState({
   // additional entity state properties
+  loaded: false
 });
 
 export const reducer = createReducer(
@@ -41,8 +43,9 @@ export const reducer = createReducer(
   on(WidgetActions.deleteWidgets,
     (state, action) => adapter.removeMany(action.ids, state)
   ),
-  on(WidgetActions.loadWidgets,
-    (state, action) => adapter.setAll(action.widgets, state)
+  on(WidgetActions.loadWidgetsSuccess,
+    // (state, action) => adapter.setAll(action.widgets, state)
+    (state, action) => adapter.setAll(action.widgets, {...state, loaded: true})
   ),
   on(WidgetActions.clearWidgets,
     state => adapter.removeAll(state)

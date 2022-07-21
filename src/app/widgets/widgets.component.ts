@@ -5,7 +5,7 @@ import { Observable, of, tap } from 'rxjs';
 import { State } from '../reducers';
 import { NewWidget, Widget } from '../shared/types/widget.type';
 import { WidgetsService } from '../shared/widgets.service';
-import { addWidget } from './widget.actions';
+import { addWidget, loadWidgets, loadWidgetsLazy } from './widget.actions';
 
 import { selectWidgetEntities, selectWidgetsAll, selectWidgetsByColor } from '../reducers';
 
@@ -28,11 +28,14 @@ export class WidgetsComponent implements OnInit {
   selectWidgetsAll$: Observable<any> | undefined;
   selectBlueWidgets$: Observable<any> | undefined;
 
-  constructor(private fb: FormBuilder, private widgetsService: WidgetsService, private store: Store<State>) { }
+  constructor(private fb: FormBuilder, private store: Store<State>) { }
 
   ngOnInit(): void {
 
     // this.widgets$ = this.widgetsService.widgets$;
+
+    this.store.dispatch(loadWidgets());
+    // this.store.dispatch(loadWidgetsLazy());
 
     this.selectWidgetEntities$ = this.store.pipe(select(selectWidgetEntities));
     this.selectWidgetsAll$ = this.store.pipe(select(selectWidgetsAll));
@@ -93,3 +96,4 @@ export class WidgetsComponent implements OnInit {
   }
 
 }
+
