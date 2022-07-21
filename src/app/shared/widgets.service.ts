@@ -51,9 +51,6 @@ export class WidgetsService {
     const widgetWithId: Widget = widget as Widget;
 
     // this.widgets.push(widgetWithId);
-    console.log('this.widgets', this.widgets);
-    console.log('widgetWithId', widgetWithId);
-    // this.widgets.push(widgetWithId);
     this.widgets.add(widgetWithId);
 
     return of(widgetWithId);
