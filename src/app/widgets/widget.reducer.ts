@@ -17,7 +17,7 @@ export const initialState: State = adapter.getInitialState({
 
 export const reducer = createReducer(
   initialState,
-  on(WidgetActions.addWidget,
+  on(WidgetActions.addWidgetSuccess,
     (state, action) => adapter.addOne(action.widget, state)
   ),
   on(WidgetActions.upsertWidget,

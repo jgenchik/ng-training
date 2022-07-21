@@ -32,7 +32,7 @@ export class WidgetsComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.widgets$ = this.widgetsService.widgets$;
+    // this.widgets$ = this.widgetsService.widgets$;
 
     this.selectWidgetEntities$ = this.store.pipe(select(selectWidgetEntities));
     this.selectWidgetsAll$ = this.store.pipe(select(selectWidgetsAll));

@@ -1,6 +1,6 @@
 import { createAction, props } from '@ngrx/store';
 import { Update } from '@ngrx/entity';
-import { Widget } from '../shared/types/widget.type';
+import { NewWidget, Widget } from '../shared/types/widget.type';
 
 
 export const loadWidgets = createAction(
@@ -10,6 +10,10 @@ export const loadWidgets = createAction(
 
 export const addWidget = createAction(
   '[Widget/API] Add Widget',
+  props<{ widget: NewWidget }>()
+);
+export const addWidgetSuccess = createAction(
+  '[Widget/API] Add Widget Success',
   props<{ widget: Widget }>()
 );
 
