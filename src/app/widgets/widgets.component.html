@@ -1,6 +1,6 @@
 
 
-<section class="widget-form">
+<section class="widget-form mat-elevation-z8">
 
     <mat-card>
 
@@ -58,6 +58,11 @@
     </mat-card>
 
 
+</section>
+
+
+<section class="widget-cards">
+    <app-widget-card *ngFor="let widget of (selectWidgetsAll$ | async)" [widget]="widget" class="app-widget-card"></app-widget-card>
 </section>
 
 

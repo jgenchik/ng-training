@@ -5,6 +5,7 @@ import { WidgetsComponent } from './widgets.component';
 import { SharedModule } from '../shared/shared.module';
 import { StoreModule } from '@ngrx/store';
 import * as fromWidget from './widget.reducer';
+import { WidgetCardComponent } from './widget-card/widget-card.component';
 
 
 const routes: Routes = [
@@ -13,7 +14,8 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    WidgetsComponent
+    WidgetsComponent,
+    WidgetCardComponent
   ],
   imports: [
     CommonModule,

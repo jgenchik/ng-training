@@ -6,6 +6,10 @@
   
 }
 
+section.widget-cards {
+  @apply container mx-auto flex flex-row gap-x-2 mt-4
+}
+
 section.debug {
   margin: 50px 10px 0 10px;
   padding: 20px;
@@ -25,5 +29,4 @@ section.debug {
   margin-left: 2px;
   margin-right: 10px;
 }
-
 

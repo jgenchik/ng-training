@@ -1,0 +1,30 @@
+<mat-card>
+
+    <mat-card-title>Widget {{widget.name}}</mat-card-title>
+
+    <mat-card-content>
+
+        <mat-form-field>
+            <mat-label>Id</mat-label>
+            <input matInput [value]="widget.id" readonly>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Price</mat-label>
+            <input matInput [value]="widget.price | currency" readonly>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Color</mat-label>
+            <input matInput [value]="widget.color" readonly>
+        </mat-form-field>
+
+        <mat-form-field *ngIf="widget.description">
+            <mat-label>Description</mat-label>
+            <textarea matInput [value]="widget.description" readonly></textarea>
+        </mat-form-field>
+
+    </mat-card-content>
+
+
+</mat-card>
