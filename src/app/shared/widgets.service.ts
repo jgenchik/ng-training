@@ -35,5 +35,9 @@ export class WidgetsService {
     return this.widgets;
   }
 
+  deleteOne(id: number) {
+    this.widgets = this.widgets.filter(w => w.id != id);
+  }
+
 
 }

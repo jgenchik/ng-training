@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Widget } from 'src/app/shared/types/widget.type';
 
 @Component({
@@ -11,9 +11,16 @@ export class WidgetCardComponent implements OnInit {
   @Input()
   widget!: Widget;
 
+  @Output() 
+  deleteWidget = new EventEmitter<number>();
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onRequestDelete() {
+    this.deleteWidget.next(this.widget.id);
   }
 
 }
