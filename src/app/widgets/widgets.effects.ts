@@ -6,7 +6,7 @@ import { selectWidgetsLoaded, State } from '../reducers';
 import { Widget } from '../shared/types/widget.type';
 import { WidgetsService } from '../shared/widgets.service';
 
-import { addWidget, addWidgetSuccess, loadWidgets, loadWidgetsLazy, loadWidgetsSuccess } from './widget.actions';
+import { addWidget, addWidgetSuccess, deleteWidget, deleteWidgetSuccess, loadWidgets, loadWidgetsLazy, loadWidgetsSuccess } from './widget.actions';
 
 
 
@@ -38,6 +38,17 @@ export class WidgetsEffects {
       ofType(addWidget),
       mergeMap(action => this.widgetsService.addOne(action.widget).pipe(
         map(widget => addWidgetSuccess({widget})),
+        catchError(() => EMPTY)
+      ))
+    )
+  );
+
+
+  deleteWidget$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(deleteWidget),
+      mergeMap(action => this.widgetsService.deleteOne(action.id).pipe(
+        map(widget => deleteWidgetSuccess({id: action.id})),
         catchError(() => EMPTY)
       ))
     )

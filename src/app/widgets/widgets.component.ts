@@ -5,7 +5,7 @@ import { Observable, of, tap } from 'rxjs';
 import { State } from '../reducers';
 import { NewWidget, Widget } from '../shared/types/widget.type';
 import { WidgetsService } from '../shared/widgets.service';
-import { addWidget, loadWidgets, loadWidgetsLazy } from './widget.actions';
+import { addWidget, deleteWidget, loadWidgets, loadWidgetsLazy } from './widget.actions';
 
 import { selectWidgetEntities, selectWidgetsAll, selectWidgetsByColor } from '../reducers';
 
@@ -64,6 +64,10 @@ export class WidgetsComponent implements OnInit {
     // this.widgetForm.reset();
     this.resetForm();
 
+  }
+
+  deleteWidget(id: number) {
+    this.store.dispatch(deleteWidget({id}));
   }
 
   resetForm() {

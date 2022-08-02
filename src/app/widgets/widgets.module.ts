@@ -8,6 +8,8 @@ import * as fromWidget from './widget.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { WidgetsEffects } from './widgets.effects';
 
+import { WidgetCardComponent } from './widget-card/widget-card.component';
+
 
 const routes: Routes = [
   { path: '', component: WidgetsComponent }
@@ -15,7 +17,8 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [
-    WidgetsComponent
+    WidgetsComponent,
+    WidgetCardComponent,
   ],
   imports: [
     CommonModule,

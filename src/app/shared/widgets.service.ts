@@ -66,5 +66,24 @@ export class WidgetsService {
     return of([...this.widgets]);
   }
 
+  deleteOne(id: number) {
+
+    // find Widget
+    let widget: Widget | undefined = undefined;
+    this.widgets.forEach(w => {
+      if(w.id == id) {
+        widget = w;
+      }
+    });
+
+
+    if(widget) {
+      this.widgets.delete(widget);
+    }
+    
+    return(of(0));
+
+  }
+
 
 }

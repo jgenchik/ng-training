@@ -42,10 +42,8 @@
                         <textarea matInput placeholder="Description" formControlName="description"></textarea>
                     </mat-form-field>
                 </div>
-                
 
             </mat-card-content>
-
 
             <mat-card-actions>
                 <button mat-raised-button color="primary" (click)="addWidget()" [disabled]="!widgetForm.valid">ADD</button>
@@ -58,6 +56,12 @@
     </mat-card>
 
 
+</section>
+
+
+<section class="widget-cards">
+    <app-widget-card *ngFor="let widget of (selectWidgetsAll$ | async)" 
+                [widget]="widget" (deleteWidget)="deleteWidget($event)" class="app-widget-card"></app-widget-card>
 </section>
 
 

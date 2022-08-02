@@ -37,7 +37,7 @@ export const reducer = createReducer(
   on(WidgetActions.updateWidgets,
     (state, action) => adapter.updateMany(action.widgets, state)
   ),
-  on(WidgetActions.deleteWidget,
+  on(WidgetActions.deleteWidgetSuccess,
     (state, action) => adapter.removeOne(action.id, state)
   ),
   on(WidgetActions.deleteWidgets,

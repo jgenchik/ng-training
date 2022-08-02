@@ -51,7 +51,11 @@ export const updateWidgets = createAction(
 
 export const deleteWidget = createAction(
   '[Widget/API] Delete Widget',
-  props<{ id: string }>()
+  props<{ id: number }>()
+);
+export const deleteWidgetSuccess = createAction(
+  '[Widget/API] Delete Widget Success',
+  props<{ id: number }>()
 );
 
 export const deleteWidgets = createAction(
@@ -62,3 +66,4 @@ export const deleteWidgets = createAction(
 export const clearWidgets = createAction(
   '[Widget/API] Clear Widgets'
 );
+
