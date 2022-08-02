@@ -1,13 +1,17 @@
 
 
 
-.widget-form {
-  width: 100%;
+// .widget-form {
+//   width: 100%;
   
-}
+// }
 
 section.widget-cards {
   @apply container mx-auto flex flex-row flex-wrap justify-center gap-x-2 mt-4
+}
+
+.app-widget-card {
+  @apply w-full md:w-80 mx-1 md:mx-0 my-4;
 }
 
 section.debug {
